@@ -1,0 +1,128 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<div>
+				<div class="barra"><img src="" alt="" /></div>
+				<nav id="navlab">
+					<div class="logo">
+						<img
+							src="/ah-removebg-preview.png"
+							alt="logo"
+							class="logo"
+						/>
+					</div>
+					<nav class="menu">
+						<ul>
+							<li><a href="#">Inicio</a></li>
+							<li><a href="#">Acerca de</a></li>
+							<li><a href="#">Servicios</a></li>
+							<li><a href="#">Contacto</a></li>
+						</ul>
+					</nav>
+					<div id="burger">
+						<button class="relative group">
+							<div
+								class="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md"
+							>
+								<div
+									class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:-translate-y-1.5 group-focus:-rotate-90"
+								>
+									<div
+										class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"
+									>
+									</div>
+									<div
+										class="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10"
+									>
+									</div>
+									<div
+										class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"
+									>
+									</div>
+								</div>
+							</div>
+						</button>
+					</div>
+				</nav>
+			</div>
+		</header>
+	</body>
+
+	<slot />
+
+	<style>
+		.burger {
+			display: none;
+		}
+		.logo {
+			width: 100px;
+			height: auto;
+		}
+		#navlab {
+			display: flex;
+			justify-content: space-between;
+			margin: 20px;
+		}
+		#menu {
+			display: none;
+		}
+
+		.menu ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.menu ul li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		.menu ul li a {
+			text-decoration: none;
+			color: #333;
+			padding: 5px 10px;
+		}
+
+		@media (min-width: 768px) {
+			#menu {
+				display: flex;
+			}
+			.burger {
+				display: none;
+			}
+			#navlinks {
+				display: flex;
+				gap: 20px;
+			}
+		}
+	</style>
+	<script is:inline>
+		const burger = document.getElementById("burger");
+		function burguerclick() {
+			const menu = document.getElementById("menu");
+			if (menu.style.display === "none") {
+				menu.style.display = "flex";
+			} else {
+				menu.style.display = "none";
+			}
+		}
+		hamburger.addEventListener("click", burguerclick);
+	</script>
+</html>
